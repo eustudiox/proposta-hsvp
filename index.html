@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Proposta de social media e conteúdo da Bloc.ia para o Hospital São Vicente de Paulo, Vitória da Conquista.">
+<meta property="og:title" content="Proposta Bloc.ia · Hospital São Vicente de Paulo">
+<meta property="og:description" content="Nós transformamos cuidado em conteúdo.">
+<link rel="icon" href="logos/bloc-ia-vermelho.svg" type="image/svg+xml">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
+<title>Proposta Bloc.ia · Hospital São Vicente de Paulo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap">
+<style>
+/* Layout: capa cinematográfica, depois a proposta em capítulos (diagnóstico com gráficos, pilares,
+   escopo, rotina em trilha animada, resultados, investimento), portfólio simples no fim e contato.
+   Visual escuro deliberado, um tema só. Destaque em ciano tirado da cruz do HSVP; vermelho só no logo Bloc.ia. */
+:root{
+  color-scheme:dark;
+  --night-900:#0A0D12; --night-800:#10141B; --night-700:#161C25;
+  --snow-100:#EEF3F8; --snow-300:#C2CBD6; --snow-500:#8A94A2;
+  --cyan-400:#5CC3EA; --cyan-600:#2B83A8; --bloc:#922424;
+  --ground:var(--night-900); --surface:var(--night-800); --raised:var(--night-700);
+  --text:var(--snow-100); --text-2:var(--snow-300); --muted:var(--snow-500);
+  --line:rgba(238,243,248,.14); --line-soft:rgba(238,243,248,.07);
+  --action:var(--cyan-400);
+  --display:'Anybody','Archivo',system-ui,sans-serif;
+  --body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Martian Mono',ui-monospace,Menlo,Consolas,monospace;
+  --step--1:clamp(.78rem,.76rem + .1vw,.85rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.125rem);
+  --step-1:clamp(1.25rem,1.15rem + .45vw,1.55rem);
+  --step-2:clamp(1.8rem,1.4rem + 1.6vw,2.7rem);
+  --step-3:clamp(2.4rem,1.5rem + 4vw,5.2rem);
+  --gut:clamp(16px,4vw,48px);
+  --ease:cubic-bezier(.2,0,0,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--ground);color:var(--text);font-family:var(--body);font-size:var(--step-0);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--ground)}
+h1,h2,h3,h4,p,dl,dd,figure,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:.96;font-stretch:90%;text-wrap:balance}
+h2{font-size:var(--step-3)}
+a{color:inherit}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+:where(a,button,[tabindex]):focus-visible{outline:2px solid var(--action);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
+.label{font-family:var(--mono);font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.label b{color:var(--action);font-weight:500}
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:var(--action)}
+.kicker::before{content:"";width:28px;height:1px;background:currentColor}
+.lede{font-size:var(--step-1);color:var(--text-2);line-height:1.45;max-width:48ch;text-wrap:pretty}
+.num{font-variant-numeric:tabular-nums}
+.sec{padding-block:clamp(80px,11vw,140px);border-top:1px solid var(--line)}
+.sec h2{margin-top:18px}
+.sec .lede{margin-top:22px}
+
+/* ============ cabeçalho */
+.top{position:fixed;z-index:60;top:env(safe-area-inset-top,0px);left:0;right:0;transition:transform .45s var(--ease),background .3s var(--ease)}
+.top.is-solid{background:rgba(10,13,18,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.top.is-hidden{transform:translateY(-110%)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.top__logo img{height:46px;width:auto}
+.top nav{display:none;gap:28px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.top nav a{text-decoration:none;color:var(--text-2)}
+.top nav a:hover{color:var(--text)}
+@media (min-width:1080px){.top nav{display:flex}}
+.pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:transparent;padding:10px 18px;border-radius:999px;font-size:var(--step--1);text-decoration:none;white-space:nowrap;cursor:pointer;transition:border-color .2s var(--ease),background .2s var(--ease),color .2s var(--ease)}
+.pill:hover{border-color:var(--text)}
+.pill--go{background:var(--action);border-color:var(--action);color:var(--night-900);font-weight:600}
+.pill--go:hover{background:#86D5F2;border-color:#86D5F2}
+
+/* ============ capa */
+.cover{position:relative;min-height:100svh;overflow:hidden;isolation:isolate;display:grid}
+.beam{position:absolute;z-index:6;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,transparent,var(--action),transparent);transform:scaleX(0);transform-origin:left;animation:beam 1.15s var(--ease) both}
+@keyframes beam{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);transform-origin:left}56%{transform-origin:right}100%{transform:scaleX(0);transform-origin:right;opacity:0}}
+.glow{position:absolute;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none}
+.glow--a{width:60vw;height:60vw;left:-18vw;top:-10vw;background:radial-gradient(circle,rgba(43,131,168,.55),transparent 65%);animation:float 18s ease-in-out infinite alternate}
+.glow--b{width:46vw;height:46vw;right:-12vw;bottom:-14vw;background:radial-gradient(circle,rgba(39,35,99,.8),transparent 65%);animation:float 22s ease-in-out infinite alternate-reverse}
+@keyframes float{to{transform:translate(6vw,4vw) scale(1.08)}}
+.cover__ghost{position:absolute;z-index:0;right:-4vw;top:50%;transform:translateY(-50%);width:min(60vw,820px);opacity:.06;pointer-events:none}
+.reg{position:absolute;z-index:5;width:22px;height:22px;opacity:.5}
+.reg::before,.reg::after{content:"";position:absolute;background:var(--snow-100)}
+.reg::before{left:0;top:50%;width:100%;height:1px;transform:scaleX(0);animation:tick .5s var(--ease) 1.25s both}
+.reg::after{top:0;left:50%;height:100%;width:1px;transform:scaleY(0);animation:tickY .5s var(--ease) 1.32s both}
+@keyframes tick{to{transform:scaleX(1)}}@keyframes tickY{to{transform:scaleY(1)}}
+.reg--bl{bottom:18px;left:max(18px,env(safe-area-inset-left,0px))}
+.reg--br{bottom:18px;right:max(18px,env(safe-area-inset-right,0px))}
+.cover__grid{position:relative;z-index:3;display:grid;grid-template-rows:1fr auto;min-height:100svh;padding-block:calc(120px + env(safe-area-inset-top,0px)) 44px}
+.cover__mid{align-self:center}
+.cover h1{font-size:clamp(2.5rem,7.6vw,8.4rem);line-height:.88;letter-spacing:-.04em;font-stretch:100%;margin-top:26px}
+.cover h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.cover h1 .ln > span{display:block;transform:translateY(110%);animation:up .9s var(--ease) both;animation-delay:calc(.45s + var(--i) * 110ms)}
+.cover h1 em{font-style:normal;color:var(--action)}
+@keyframes up{to{transform:translateY(0)}}
+.cover__lede{margin-top:32px;max-width:52ch}
+.ci{opacity:0;transform:translateY(16px);animation:ci .62s var(--ease) both;animation-delay:calc(1.2s + var(--i,0) * 90ms)}
+@keyframes ci{to{opacity:1;transform:none}}
+.cover__bottom{display:grid;gap:22px}
+.cover .rule{height:1px;background:var(--line);border:0;margin:0;transform:scaleX(0);transform-origin:left;animation:ruleIn .85s var(--ease) 1.3s both}
+@keyframes ruleIn{to{transform:scaleX(1)}}
+.metas{display:flex;flex-wrap:wrap;gap:20px 56px;align-items:end}
+.meta{display:grid;gap:4px}
+.meta dt{font-family:var(--mono);font-size:var(--step--1);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.meta dd{font-family:var(--display);font-size:var(--step-2);font-weight:700;letter-spacing:-.02em;font-stretch:100%}
+.for{margin-left:auto;display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.for img{height:44px;width:auto}
+@media (max-width:700px){.for{margin-left:0}}
+
+/* ============ sobre */
+.about{position:relative;overflow:hidden;isolation:isolate}
+.about .glow--a{left:auto;right:-20vw;top:10%;width:50vw;height:50vw;opacity:.6}
+.about__big{font-size:clamp(3rem,11vw,10rem);line-height:.88;letter-spacing:-.045em;font-stretch:118%;margin-top:22px}
+.about__big .accent{color:var(--action)}
+.about__big .ln{display:block}
+.about__sub{margin-top:36px;font-size:var(--step-1);color:var(--text-2);max-width:40ch}
+
+/* ============ diagnóstico */
+.cols{margin-top:56px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (min-width:900px){.cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.col{background:var(--ground);padding:32px;min-width:0}
+.col h3{font-size:var(--step-1);font-stretch:100%;margin-bottom:18px;letter-spacing:-.02em}
+.col.hot h3{color:var(--action)}
+.col li{padding:11px 0;border-top:1px solid var(--line-soft);color:var(--text-2);font-size:var(--step--1);line-height:1.5}
+.col li b{color:var(--text);font-weight:600}
+.charts{margin-top:72px;display:grid;gap:20px}
+@media (min-width:980px){.charts{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,36px);min-width:0;position:relative}
+.panel__head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
+.panel h3{font-size:var(--step-1);font-stretch:100%;letter-spacing:-.02em}
+.panel .note{margin-top:22px;font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
+.bars{margin-top:28px;display:grid;gap:22px}
+.bar__top{display:flex;justify-content:space-between;gap:12px;font-size:var(--step--1);color:var(--text-2)}
+.bar__top b{font-family:var(--mono);font-weight:500;color:var(--text);white-space:nowrap}
+.bar__track{margin-top:8px;height:12px;border-radius:3px;background:var(--raised);overflow:hidden;position:relative}
+.bar__fill{position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--action);border-radius:3px;transform-origin:left;transform:scaleX(var(--s,1))}
+.bar__fill.dim{background:var(--snow-500)}
+.bar__track.empty::after{content:"zero";position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.compare{margin-top:28px;display:grid;gap:22px}
+.cmp{display:grid;gap:8px}
+.cmp__label{font-size:var(--step--1);color:var(--text-2)}
+.cmp__row{display:grid;grid-template-columns:76px minmax(0,1fr) 52px;gap:12px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cmp__row b{color:var(--text);font-weight:500;text-align:right;font-size:13px}
+.cmp__row.new{color:var(--action)}
+.cmp__row.new b{color:var(--action)}
+.cmp .bar__track{margin:0;height:10px}
+
+/* ============ pilares + donut */
+.pillars{margin-top:56px;display:grid;gap:12px}
+@media (min-width:760px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr))}.pillars .wide{grid-column:1/-1}}
+.pil{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:14px;padding:clamp(24px,3vw,40px);min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;background:linear-gradient(160deg,var(--raised),var(--ground));transition:border-color .3s var(--ease),transform .5s var(--ease)}
+.pil:hover{border-color:var(--action);transform:translateY(-3px)}
+.pil__n{position:absolute;top:18px;left:24px;font-family:var(--display);font-weight:800;font-size:clamp(4rem,9vw,7rem);line-height:1;color:rgba(238,243,248,.06);font-stretch:120%}
+.pil h3{font-size:var(--step-2);font-stretch:105%}
+.pil p{color:var(--text-2);max-width:46ch;font-size:var(--step--1)}
+.pil .fmt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--action)}
+.mix{margin-top:20px;display:grid;gap:28px;align-items:center}
+@media (min-width:860px){.mix{grid-template-columns:auto minmax(0,1fr);gap:56px}}
+.donut{position:relative;width:min(260px,70vw);aspect-ratio:1;max-width:100%;margin-inline:auto}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.donut__c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.donut__c b{font-family:var(--display);font-size:clamp(3rem,7vw,4.4rem);font-weight:800;line-height:1;font-stretch:110%}
+.donut__c span{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.legend{display:grid;gap:0;border-top:1px solid var(--line)}
+.legend li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.legend i{width:14px;height:14px;border-radius:3px}
+.legend b{font-family:var(--mono);font-weight:500;font-size:13px}
+.legend small{display:block;color:var(--muted);font-size:12.5px}
+
+/* ============ escopo */
+.cap{margin-top:56px;border-top:1px solid var(--line)}
+.cap__item{display:grid;gap:14px 40px;padding:32px 0;border-bottom:1px solid var(--line);transition:opacity .3s var(--ease)}
+@media (min-width:900px){.cap__item{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}.cap:hover .cap__item{opacity:.35}.cap:hover .cap__item:hover{opacity:1}}
+.cap__head .label{display:block;margin-bottom:10px}
+.cap__head h3{font-size:clamp(2.2rem,5vw,4rem);font-stretch:110%}
+.cap__item ul{display:grid;align-content:start}
+.cap__item li{padding:8px 0;border-top:1px solid var(--line-soft);color:var(--text-2);font-size:var(--step--1)}
+.cap__item li:first-child{border-top:0}
+
+/* ============ trilha */
+.trail{position:relative;margin-top:64px}
+.trail__svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.trail__base{fill:none;stroke:var(--line);stroke-width:2;stroke-dasharray:3 7}
+.trail__path{fill:none;stroke:var(--action);stroke-width:2.5;stroke-linecap:round}
+.trail__runner{fill:var(--action)}
+.steps{display:grid;gap:clamp(56px,9vw,120px);position:relative}
+.step{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px 28px;align-items:start}
+@media (min-width:900px){.step{grid-template-columns:120px minmax(0,220px) minmax(0,1fr)}.step:nth-child(2){margin-left:12%}.step:nth-child(3){margin-left:4%}}
+.node{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--line);background:var(--ground);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--muted);position:relative;z-index:1;transition:border-color .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease)}
+.step.is-on .node{border-color:var(--action);color:var(--night-900);background:var(--action);box-shadow:0 0 0 8px rgba(92,195,234,.12)}
+.step__when{font-family:var(--mono);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:20px;transition:color .4s var(--ease)}
+.step.is-on .step__when{color:var(--action)}
+@media (max-width:899px){.step__when{grid-column:2;padding-top:0;order:-1}.step .node{grid-row:1/span 2}}
+.step__body{max-width:56ch}
+.step__body h3{font-size:var(--step-2);font-stretch:105%}
+.step__body p{margin-top:10px;color:var(--text-2)}
+.cycle{margin-top:clamp(72px,9vw,120px);display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.cycle{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.loop{position:relative;width:min(420px,86vw);aspect-ratio:1;max-width:100%;margin-inline:auto}
+.loop svg{width:100%;height:100%}
+.loop__ring{fill:none;stroke:var(--line);stroke-width:1.5}
+.loop__arc{fill:none;stroke:var(--action);stroke-width:3;stroke-linecap:round}
+.loop__lbl{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;fill:var(--text-2)}
+.loop__dot{fill:var(--ground);stroke:var(--line);stroke-width:1.5;transition:fill .3s,stroke .3s}
+.loop__dot.is-on{fill:var(--action);stroke:var(--action)}
+.loop__center{font-family:var(--display);font-weight:800;fill:var(--text);font-size:30px}
+.loop__sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;fill:var(--muted);text-transform:uppercase}
+
+/* ============ resultados */
+.two{display:grid;gap:64px}
+@media (min-width:900px){.two{grid-template-columns:1fr 1fr}}
+.two h2{font-size:var(--step-2);font-stretch:105%}
+.kv{margin-top:32px;display:grid}
+.kv li{padding:20px 0;border-top:1px solid var(--line)}
+.kv b{display:block;font-family:var(--display);font-size:var(--step-1);font-weight:700;letter-spacing:-.02em;font-stretch:100%}
+.kv span{display:block;margin-top:4px;color:var(--text-2);font-size:var(--step--1)}
+
+/* ============ investimento */
+.deal{margin-top:56px;display:grid;gap:12px}
+@media (min-width:900px){.deal{grid-template-columns:1.15fr 1fr}}
+.deal article{border:1px solid var(--line);border-radius:14px;padding:clamp(26px,3.5vw,44px);display:grid;gap:14px;align-content:start}
+.deal .main{background:var(--action);border-color:var(--action);color:var(--night-900)}
+.deal .main .label{color:rgba(10,13,18,.6)}
+.deal h3{font-size:var(--step-2);font-stretch:105%}
+.deal p{font-size:var(--step--1)}
+.deal .side p{color:var(--text-2)}
+.deal li{padding:10px 0;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent);font-size:var(--step--1)}
+.deal .side li{color:var(--text-2)}
+.statement{padding-block:clamp(96px,13vw,170px);text-align:center;border-top:1px solid var(--line)}
+.statement p:first-child{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,6vw,5rem);line-height:.98;letter-spacing:-.035em;font-stretch:110%;max-width:18ch;margin-inline:auto;text-wrap:balance}
+.statement p + p{margin:28px auto 0;color:var(--text-2);max-width:52ch}
+
+/* ============ portfólio (simples) */
+.port__grid{margin-top:48px;display:grid;gap:48px;align-items:center}
+@media (min-width:960px){.port__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.clients{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.clients span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12.5px;color:var(--text-2)}
+.cs-stage{position:relative;justify-self:center;max-width:100%}
+.cs{position:absolute;left:0;bottom:0;perspective:1200px}
+.cs-inner{position:absolute;inset:0;transform-style:preserve-3d}
+.cs-card{position:absolute;top:50%;left:50%;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:0 30px 60px rgba(0,0,0,.55);transform-style:preserve-3d;backface-visibility:hidden;will-change:transform;cursor:zoom-in}
+.cs-card img{width:100%;height:100%;object-fit:cover}
+.thumbs{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+@media (min-width:700px){.thumbs{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (min-width:1100px){.thumbs{grid-template-columns:repeat(9,minmax(0,1fr))}}
+.thumb{aspect-ratio:4/5;max-width:100%;width:100%;padding:0;border:1px solid var(--line-soft);border-radius:6px;overflow:hidden;background:var(--surface);cursor:zoom-in}
+.thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.85);transition:filter .3s var(--ease),transform .5s var(--ease)}
+.thumb:hover img,.thumb:focus-visible img{filter:none;transform:scale(1.05)}
+
+/* ============ contato */
+.contact h2{max-width:20ch}
+.next{margin-top:56px;position:relative;display:grid;gap:28px}
+@media (min-width:860px){.next{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
+.next__line{display:none}
+@media (min-width:860px){.next__line{display:block;position:absolute;left:0;right:0;top:22px;height:2px;background:var(--line)}.next__line i{position:absolute;inset:0;background:var(--action);transform-origin:left;transform:scaleX(var(--p,1))}}
+.next .nx{position:relative;display:grid;gap:8px;align-content:start}
+.next .dot{width:46px;height:46px;border-radius:50%;background:var(--ground);border:1.5px solid var(--action);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--action);font-size:1.2rem;position:relative;z-index:1}
+.next h3{font-size:var(--step-1);font-stretch:100%;margin-top:8px}
+.next p{color:var(--text-2);font-size:var(--step--1)}
+.links{margin-top:64px;display:grid;border-top:1px solid var(--line)}
+.link{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+@media (min-width:760px){.link{grid-template-columns:180px minmax(0,1fr) auto}}
+.link .label{display:none}
+@media (min-width:760px){.link .label{display:block}}
+.link .val{font-family:var(--display);font-size:var(--step-2);font-weight:700;letter-spacing:-.02em;font-stretch:95%;text-decoration:none;overflow-wrap:anywhere;min-width:0;user-select:all}
+.link a.val{user-select:auto}
+.link a.val:hover{color:var(--action)}
+.foot{border-top:1px solid var(--line);padding-block:64px calc(28px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot__logo{width:min(760px,88%);margin:0 auto}
+.foot__row{margin-top:48px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:var(--step--1)}
+.foot__row .pair{display:flex;align-items:center;gap:14px}
+.foot__row .pair img{height:40px;width:auto}
+
+/* ============ visor */
+.viewer{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:calc(64px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(6,8,11,.94);backdrop-filter:blur(10px)}
+.viewer img{max-height:calc(100svh - 140px);width:auto;max-width:100%;border-radius:10px;border:1px solid var(--line);animation:pop .35s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+.viewer .pill{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+
+/* reveal suave: o conteúdo começa visível; o JS só anima quando entra */
+@media (prefers-reduced-motion:reduce){
+  .beam{display:none}
+  .glow,.cover h1 .ln > span,.reg::before,.reg::after,.ci,.cover .rule,.viewer img{animation:none!important;opacity:1!important;transform:none!important}
+}
+</style>
+
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a href="#topo" class="top__logo" aria-label="Bloc.ia, voltar ao topo"><img src="logos/bloc-ia-branco.svg" alt="Bloc.ia" width="61" height="38"></a>
+    <nav aria-label="Seções">
+      <a href="#diagnostico">Diagnóstico</a><a href="#estrategia">Estratégia</a><a href="#escopo">O que inclui</a><a href="#rotina">Rotina</a><a href="#investimento">Investimento</a><a href="#portfolio">Portfólio</a>
+    </nav>
+    <a href="#contato" class="pill pill--go">Falar com a equipe</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<section class="cover" aria-label="Capa">
+  <span class="beam" aria-hidden="true"></span>
+  <div class="glow glow--a" aria-hidden="true"></div><div class="glow glow--b" aria-hidden="true"></div>
+  <img class="cover__ghost" src="logos/hsvp-branco.svg" alt="" aria-hidden="true">
+  <span class="reg reg--bl"></span><span class="reg reg--br"></span>
+  <div class="wrap cover__grid">
+    <div class="cover__mid">
+      <p class="kicker ci" style="--i:0;animation-delay:.2s">Proposta de social media e conteúdo · Outubro de 2026</p>
+      <h1><span class="ln"><span style="--i:0">Nós transformamos</span></span><span class="ln"><span style="--i:1">cuidado em</span></span><span class="ln"><span style="--i:2"><em>conteúdo.</em></span></span></h1>
+      <p class="lede cover__lede ci" style="--i:1">Gestão de redes sociais e produção de conteúdo para o Hospital São Vicente de Paulo, em Vitória da Conquista. Planejamento, vídeo, design e mídia paga em uma só equipe.</p>
+    </div>
+    <div class="cover__bottom">
+      <hr class="rule">
+      <div class="metas">
+        <dl class="meta ci" style="--i:2"><dt>Seguidores no Instagram</dt><dd class="num"><span data-to="21.7" data-dec="1">21,7</span> mil</dd></dl>
+        <dl class="meta ci" style="--i:3"><dt>Frentes de trabalho</dt><dd class="num" data-to="17">17</dd></dl>
+        <dl class="meta ci" style="--i:4"><dt>Dias de imersão</dt><dd class="num" data-to="15">15</dd></dl>
+        <div class="for ci" style="--i:5"><span class="label">Para</span><img src="logos/hsvp-fundo-escuro.svg" alt="Hospital São Vicente de Paulo" width="49" height="44"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" aria-labelledby="about-h">
+  <div class="glow glow--a" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="kicker">Hospital São Vicente de Paulo</p>
+    <h2 id="about-h" class="about__big rv"><span class="ln">Cuidar faz parte</span><span class="ln">da nossa <span class="accent">história.</span></span></h2>
+    <p class="about__sub rv">Vamos transformar marcas em referência de cuidado.</p>
+  </div>
+</section>
+
+<section class="sec" id="diagnostico" aria-labelledby="diag-h">
+  <div class="wrap">
+    <p class="kicker">Diagnóstico</p>
+    <h2 id="diag-h" class="rv">O perfil já tem comunidade. Falta transformar atenção em agendamento.</h2>
+    <p class="lede rv">Leitura pública do perfil entre 28/09 e 27/10/2026. A confirmar com as métricas internas do hospital.</p>
+    <div class="cols rv">
+      <div class="col"><h3>O que já funciona</h3><ul>
+        <li><b>Base de 21,7 mil seguidores</b> na cidade e região.</li>
+        <li><b>Destaques por setor</b>: Ambulatório, Pronto Socorro, Serviços, Equipe, Eventos.</li>
+        <li><b>Prova social ativa</b> com destaque de feedbacks.</li>
+        <li><b>WhatsApp na bio</b> como canal de conversão.</li>
+        <li><b>Pessoas reais</b> nas fotos: equipe, pacientes, estrutura.</li></ul></div>
+      <div class="col hot"><h3>Onde há espaço</h3><ul>
+        <li><b>Artes com texto dominam o feed</b> e rendem pouco alcance.</li>
+        <li><b>Vídeo curto ainda é minoria</b>, apesar de ser a principal porta de descoberta.</li>
+        <li><b>4 links na bio</b> dispersam a ação principal.</li>
+        <li><b>Destaques por setor</b>, sem mostrar especialidades.</li>
+        <li><b>Facebook e TikTok</b> fora da rotina visível.</li></ul></div>
+      <div class="col"><h3>A validar juntos</h3><ul>
+        <li><b>Alcance e engajamento reais</b> por formato.</li>
+        <li><b>Origem dos contatos</b> no WhatsApp.</li>
+        <li><b>Serviços prioritários</b> para a direção.</li>
+        <li><b>Frequência atual</b> de publicação.</li>
+        <li><b>Mídia paga</b>: o que já foi impulsionado.</li></ul></div>
+    </div>
+
+    <div class="charts">
+      <article class="panel">
+        <div class="panel__head"><h3>Raio-X dos 6 posts mais recentes</h3><span class="label">Feed · out 2026</span></div>
+        <div class="bars" data-chart="bars">
+          <div class="bar"><div class="bar__top"><span>Artes estáticas com muito texto</span><b class="num"><span data-count="6">6</span> de 6</b></div><div class="bar__track"><div class="bar__fill dim" style="--w:100%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span>Falam com colaboradores ou parceiros</span><b class="num"><span data-count="3">3</span> de 6</b></div><div class="bar__track"><div class="bar__fill dim" style="--w:50%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span>Apresentam um serviço ao paciente</span><b class="num"><span data-count="1">1</span> de 6</b></div><div class="bar__track"><div class="bar__fill" style="--w:16.7%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span>Vídeos no topo do feed</span><b class="num">0 de 6</b></div><div class="bar__track empty"></div></div>
+        </div>
+        <p class="note">Vaga de RH, campanha interna e palestra de parceiros contam como outro público.</p>
+      </article>
+      <article class="panel">
+        <div class="panel__head"><h3>Hoje e depois do ajuste</h3><span class="label">Perfil</span></div>
+        <div class="compare" data-chart="compare">
+          <div class="cmp"><span class="cmp__label">Links na bio</span>
+            <div class="cmp__row"><span>Hoje</span><div class="bar__track"><div class="bar__fill dim" style="--w:100%"></div></div><b>4</b></div>
+            <div class="cmp__row new"><span>Proposta</span><div class="bar__track"><div class="bar__fill" style="--w:25%"></div></div><b>1</b></div></div>
+          <div class="cmp"><span class="cmp__label">Destaques</span>
+            <div class="cmp__row"><span>Hoje</span><div class="bar__track"><div class="bar__fill dim" style="--w:100%"></div></div><b>9</b></div>
+            <div class="cmp__row new"><span>Proposta</span><div class="bar__track"><div class="bar__fill" style="--w:66.7%"></div></div><b>6</b></div></div>
+          <div class="cmp"><span class="cmp__label">Vídeo no feed</span>
+            <div class="cmp__row"><span>Hoje</span><div class="bar__track empty"></div><b>0%</b></div>
+            <div class="cmp__row new"><span>Proposta</span><div class="bar__track"><div class="bar__fill" style="--w:50%"></div></div><b>50%</b></div></div>
+        </div>
+        <p class="note">Um link direto para o WhatsApp e destaques por especialidade.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="estrategia" aria-labelledby="est-h">
+  <div class="wrap">
+    <p class="kicker">Estratégia · cada post nasce de um pilar</p>
+    <h2 id="est-h" class="rv">Cinco pilares de conteúdo.</h2>
+    <div class="pillars">
+      <article class="pil rv"><span class="pil__n">01</span><span class="fmt">Vídeo · Foto</span><h3>Acolhimento</h3><p>Cenas reais do cuidado: recepção, equipe e rotina do hospital, em vídeo e foto.</p></article>
+      <article class="pil rv"><span class="pil__n">02</span><span class="fmt">Reels · Carrossel</span><h3>Saúde em linguagem simples</h3><p>Prevenção, sintomas e quando procurar atendimento, em Reels e carrosséis.</p></article>
+      <article class="pil rv"><span class="pil__n">03</span><span class="fmt">Carrossel · Stories</span><h3>Especialidades e serviços</h3><p>O que cada setor resolve, quem atende e como agendar pelo WhatsApp.</p></article>
+      <article class="pil rv"><span class="pil__n">04</span><span class="fmt">Vídeo · Entrevista</span><h3>Equipe e bastidores</h3><p>Rostos e histórias dos profissionais que sustentam a confiança no hospital.</p></article>
+      <article class="pil wide rv"><span class="pil__n">05</span><span class="fmt">Vídeo · Cobertura</span><h3>Histórias e comunidade</h3><p>Depoimentos autorizados, eventos, ações sociais e datas da saúde.</p></article>
+    </div>
+    <article class="panel" style="margin-top:20px">
+      <div class="panel__head"><h3>Um mês de feed, por formato</h3><span class="label">Exemplo · 12 posts</span></div>
+      <div class="mix">
+        <div class="donut" data-chart="donut">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="var(--raised)" stroke-width="16"/>
+            <circle class="seg" cx="60" cy="60" r="46" fill="none" stroke="var(--cyan-400)" stroke-width="16" data-v="6"/>
+            <circle class="seg" cx="60" cy="60" r="46" fill="none" stroke="var(--cyan-600)" stroke-width="16" data-v="5"/>
+            <circle class="seg" cx="60" cy="60" r="46" fill="none" stroke="var(--snow-500)" stroke-width="16" data-v="1"/>
+          </svg>
+          <div class="donut__c"><b class="num" data-count="12">12</b><span>posts no mês</span></div>
+        </div>
+        <ul class="legend">
+          <li><i style="background:var(--cyan-400)"></i><span>Vídeo<small>Reels de acolhimento, equipe e saúde</small></span><b class="num">6</b></li>
+          <li><i style="background:var(--cyan-600)"></i><span>Carrossel<small>Especialidades, sintomas e agendamento</small></span><b class="num">5</b></li>
+          <li><i style="background:var(--snow-500)"></i><span>Foto<small>Cobertura de evento ou ação social</small></span><b class="num">1</b></li>
+          <li><i style="background:var(--raised);border:1px solid var(--line)"></i><span>Stories diários<small>Vagas e eventos de parceiros saem do feed e vão para cá</small></span><b class="num">+</b></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="escopo" aria-labelledby="esc-h">
+  <div class="wrap">
+    <p class="kicker">O que está incluído</p>
+    <h2 id="esc-h" class="rv">17 frentes, uma equipe só.</h2>
+    <ul class="cap">
+      <li class="cap__item rv"><div class="cap__head"><span class="label">Bloco 1 · <b>4 frentes</b></span><h3>Estratégia e planejamento</h3></div><ul><li>Direção criativa de conteúdo</li><li>Análise de mercado e público-alvo</li><li>Ideias, pautas e roteiros</li><li>Planejamento e calendário editorial</li></ul></li>
+      <li class="cap__item rv"><div class="cap__head"><span class="label">Bloco 2 · <b>4 frentes</b></span><h3>Criação</h3></div><ul><li>Copy, headlines, legendas e textos institucionais</li><li>Peças visuais para redes sociais</li><li>Produção visual com inteligência artificial</li><li>Ensaio fotográfico com IA</li></ul></li>
+      <li class="cap__item rv"><div class="cap__head"><span class="label">Bloco 3 · <b>4 frentes</b></span><h3>Audiovisual</h3></div><ul><li>Produção cinematográfica (filmagem real + IA)</li><li>Captação audiovisual presencial</li><li>Vídeo e motion</li><li>Edição e pós-produção</li></ul></li>
+      <li class="cap__item rv"><div class="cap__head"><span class="label">Bloco 4 · <b>5 frentes</b></span><h3>Gestão e performance</h3></div><ul><li>Gestão mensal de redes (Instagram, Facebook, TikTok)</li><li>Publicação, agendamento e interações</li><li>Otimização de perfil</li><li>Mídia paga e impulsionamento</li><li>Análise de resultados e relatórios</li></ul></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="rotina" aria-labelledby="rot-h">
+  <div class="wrap">
+    <p class="kicker">Como o trabalho acontece</p>
+    <h2 id="rot-h" class="rv">Começamos ouvindo. Depois, entregamos todo mês.</h2>
+    <div class="trail" id="trail">
+      <svg class="trail__svg" id="trailSvg" aria-hidden="true"><path class="trail__base" id="trailBase"/><path class="trail__path" id="trailPath"/><circle class="trail__runner" id="trailRunner" r="6" cx="-20" cy="-20"/></svg>
+      <ol class="steps">
+        <li class="step"><span class="node">1</span><span class="step__when">Primeiros 15 dias</span><div class="step__body"><h3>Imersão e diagnóstico</h3><p>Acesso às contas, leitura das métricas, conversa com a direção e com os setores prioritários. Definimos pilares, metas e o que entra primeiro no calendário.</p></div></li>
+        <li class="step"><span class="node">2</span><span class="step__when">Dias 15 a 30</span><div class="step__body"><h3>Primeira produção</h3><p>Calendário do primeiro mês aprovado, primeira captação no hospital e ajuste do perfil: bio, destaques e link principal.</p></div></li>
+        <li class="step"><span class="node">3</span><span class="step__when">A partir do mês 2</span><div class="step__body"><h3>Rotina mensal</h3><p>Planejar, produzir, publicar e medir. O ciclo se repete todo mês, com um relatório que orienta o mês seguinte.</p></div></li>
+      </ol>
+    </div>
+    <div class="cycle">
+      <div class="loop" id="loop" role="img" aria-label="Ciclo mensal: planejar, produzir, publicar e medir, com relatório ao fim">
+        <svg viewBox="0 0 400 400">
+          <circle class="loop__ring" cx="200" cy="200" r="140"/>
+          <circle class="loop__arc" id="loopArc" cx="200" cy="200" r="140" transform="rotate(-90 200 200)"/>
+          <g id="loopDots"></g>
+          <text class="loop__center" x="200" y="198" text-anchor="middle">Todo mês</text>
+          <text class="loop__sub" x="200" y="222" text-anchor="middle">relatório no fim</text>
+        </svg>
+      </div>
+      <div>
+        <p class="label">O ciclo da fase 3</p>
+        <ul class="kv" id="loopList">
+          <li><b>Planejar</b><span>Pautas e calendário do mês aprovados pela direção.</span></li>
+          <li><b>Produzir</b><span>Captação no hospital, design e edição.</span></li>
+          <li><b>Publicar</b><span>Agendamento, stories e resposta às interações.</span></li>
+          <li><b>Medir</b><span>Relatório mensal que orienta o mês seguinte.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-label="Resultados e responsabilidade">
+  <div class="wrap two">
+    <div>
+      <p class="kicker">Resultados</p>
+      <h2 class="rv">O que medimos todo mês</h2>
+      <ul class="kv">
+        <li><b>Alcance e visualizações de vídeo</b><span>Quantas pessoas novas veem o hospital, por formato e rede.</span></li>
+        <li><b>Engajamento e crescimento</b><span>Comentários, salvamentos, compartilhamentos e seguidores.</span></li>
+        <li><b>Contatos no WhatsApp</b><span>Cliques no link da bio e conversas iniciadas pelas redes e anúncios.</span></li>
+      </ul>
+    </div>
+    <div>
+      <p class="kicker">Responsabilidade</p>
+      <h2 class="rv">Saúde exige cuidado extra</h2>
+      <ul class="kv">
+        <li><b>Normas de publicidade em saúde</b><span>Sem promessa de resultado e sem sensacionalismo.</span></li>
+        <li><b>Privacidade e LGPD</b><span>Imagem de paciente só com autorização por escrito.</span></li>
+        <li><b>Aprovação em duas etapas</b><span>Calendário mensal aprovado e peças sensíveis revisadas pelo responsável técnico.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="investimento" aria-labelledby="inv-h">
+  <div class="wrap">
+    <p class="kicker">Investimento</p>
+    <h2 id="inv-h" class="rv">Escopo fechado, sem cobrança por hora.</h2>
+    <div class="deal">
+      <article class="main rv"><span class="label">Modelo proposto</span><h3>Mensalidade por escopo</h3><p>Valor mensal fechado, definido depois da imersão, com as frentes que o hospital escolher entre as dezessete.</p>
+        <ul><li>Entregas e frequência combinadas por escrito</li><li>Sem cobrança por hora ou por peça avulsa no escopo</li><li>Relatório mensal incluído</li></ul></article>
+      <article class="side rv"><span class="label">Fica separado</span><h3>Itens de terceiros</h3><p>Itens que dependem de terceiros ou de decisão do hospital.</p>
+        <ul><li>Verba de anúncios, paga direto às plataformas</li><li>Deslocamentos fora de Vitória da Conquista</li><li>Frentes novas fora do escopo, com orçamento prévio</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="statement" aria-label="Princípio">
+  <div class="wrap">
+    <p class="rv">Sem promessa de número antes de ver os dados.</p>
+    <p class="rv">As metas são definidas ao fim da imersão, com base nas métricas atuais do hospital, e revisadas a cada trimestre.</p>
+  </div>
+</section>
+
+<section class="sec" id="portfolio" aria-labelledby="port-h">
+  <div class="wrap">
+    <div class="port__grid">
+      <div>
+        <p class="kicker">Portfólio Bloc.ia</p>
+        <h2 id="port-h" class="rv">Peças que já fizemos.</h2>
+        <p class="lede">27 peças para 9 clientes, de clínica de saúde ocupacional a prefeituras, varejo, telecom e música. Toque numa peça para ampliar.</p>
+        <div class="clients"><span>ASMET</span><span>Prefeitura de Barra do Choça</span><span>Prefeitura de Malhada de Pedras</span><span>Paramirim Net</span><span>Vitória Pizzaria</span><span>Miau Auau Pet Shop</span><span>Salgateria Brasileira</span><span>Josi Oliveira</span><span>WNS</span></div>
+      </div>
+      <div class="cs-stage" id="stack" aria-label="Peças em destaque, trocando sozinhas"></div>
+    </div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+</section>
+
+<section class="sec contact" id="contato" aria-labelledby="ct-h">
+  <div class="wrap">
+    <p class="kicker">Próximo passo</p>
+    <h2 id="ct-h" class="rv">Vamos conversar sobre o que o Hospital São Vicente de Paulo quer ser nas redes.</h2>
+    <p class="lede">Uma reunião de uma hora com a direção e a comunicação define as prioridades do primeiro mês.</p>
+    <div class="next" id="next">
+      <span class="next__line" aria-hidden="true"><i id="nextFill"></i></span>
+      <div class="nx"><span class="dot">1</span><h3>Reunião de 1 hora</h3><p>Direção e comunicação alinham prioridades.</p></div>
+      <div class="nx"><span class="dot">2</span><h3>Imersão de 15 dias</h3><p>Leitura das métricas e definição das metas.</p></div>
+      <div class="nx"><span class="dot">3</span><h3>Proposta final</h3><p>Escopo e valor mensal fechados por escrito.</p></div>
+    </div>
+    <div class="links">
+      <div class="link"><span class="label">WhatsApp</span><span class="val">(77) 98163-9688</span><a class="pill pill--go" href="https://wa.me/5577981639688" target="_blank" rel="noopener">Abrir conversa</a></div>
+      <div class="link"><span class="label">E-mail</span><span class="val" id="mail">creativedirector.ia@outlook.com</span><button class="pill" type="button" id="copyMail">Copiar</button></div>
+      <div class="link"><span class="label">Instagram</span><a class="val" href="https://www.instagram.com/bloc.ia/" target="_blank" rel="noopener">@bloc.ia</a><a class="pill" href="https://www.instagram.com/bloc.ia/" target="_blank" rel="noopener">Ver perfil</a></div>
+      <div class="link"><span class="label">Filmmaker</span><a class="val" href="https://www.instagram.com/w__filmmaker/" target="_blank" rel="noopener">@w__filmmaker</a><a class="pill" href="https://www.instagram.com/w__filmmaker/" target="_blank" rel="noopener">Ver perfil</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img class="foot__logo" src="logos/bloc-ia-vermelho.svg" alt="Bloc.ia" width="916" height="567">
+    <div class="foot__row">
+      <div class="pair"><img src="logos/hsvp-fundo-escuro.svg" alt="Hospital São Vicente de Paulo" width="45" height="40"><span>Proposta comercial · Outubro de 2026</span></div>
+      <a href="#topo" class="pill">Voltar ao topo</a>
+    </div>
+  </div>
+</footer>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Peça ampliada">
+  <button class="pill" type="button" id="vClose">Fechar</button>
+  <img id="vImg" alt="">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const G = window.gsap, ST = window.ScrollTrigger;
+  const motion = !!(G && ST) && !reduce;
+  if (motion) G.registerPlugin(ST);
+
+  /* cabeçalho: fica sólido ao rolar, some descendo, volta subindo */
+  const top = $('#top'); let lastY = 0;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    top.classList.toggle('is-solid', y > 40);
+    top.classList.toggle('is-hidden', y > lastY && y > 400);
+    lastY = y;
+  }, {passive:true});
+
+  /* contadores */
+  function count(el, delay = 0){
+    const to = parseFloat(el.dataset.to || el.dataset.count), dec = +(el.dataset.dec || 0);
+    if (!motion) return;
+    const o = {v:0};
+    G.to(o, {v:to, duration:1.1, delay, ease:'power2.out', onUpdate:() => { el.textContent = o.v.toFixed(dec).replace('.', ','); }});
+  }
+  $$('.cover [data-to]').forEach(el => count(el, 1.5));
+
+  if (motion) {
+    /* revelações ao rolar */
+    $$('.rv').forEach(el => G.from(el, {y:50, opacity:0, duration:1, ease:'power3.out', scrollTrigger:{trigger:el, start:'top 88%', once:true}}));
+
+    /* gráfico de barras e comparativo */
+    $$('[data-chart="bars"], [data-chart="compare"]').forEach(box => {
+      const fills = $$('.bar__fill', box);
+      G.set(fills, {'--s':0});
+      ST.create({trigger:box, start:'top 80%', once:true, onEnter:() => {
+        G.to(fills, {'--s':1, duration:1.2, ease:'power3.out', stagger:.12});
+        $$('[data-count]', box).forEach((c, i) => count(c, i * .12));
+      }});
+    });
+
+    /* rosca */
+    const donut = $('[data-chart="donut"]');
+    if (donut) {
+      const C = 2 * Math.PI * 46, segs = $$('.seg', donut);
+      const total = segs.reduce((a, s) => a + +s.dataset.v, 0);
+      let acc = 0;
+      segs.forEach(s => {
+        const len = C * (+s.dataset.v / total) - 1.5;
+        s.setAttribute('stroke-dasharray', '0 ' + C);
+        s.setAttribute('stroke-dashoffset', -acc);
+        s._len = len; acc += C * (+s.dataset.v / total);
+      });
+      ST.create({trigger:donut, start:'top 80%', once:true, onEnter:() => {
+        segs.forEach((s, i) => { const o = {v:0}; G.to(o, {v:s._len, duration:1, delay:i * .35, ease:'power2.inOut', onUpdate:() => s.setAttribute('stroke-dasharray', o.v + ' ' + C)}); });
+        count($('[data-count]', donut));
+      }});
+    }
+  } else {
+    /* sem movimento: rosca já completa */
+    const donut = $('[data-chart="donut"]');
+    if (donut) { const C = 2 * Math.PI * 46, segs = $$('.seg', donut), t = segs.reduce((a, s) => a + +s.dataset.v, 0); let acc = 0;
+      segs.forEach(s => { const len = C * (+s.dataset.v / t) - 1.5; s.setAttribute('stroke-dasharray', len + ' ' + C); s.setAttribute('stroke-dashoffset', -acc); acc += C * (+s.dataset.v / t); }); }
+  }
+
+  /* trilha animada da rotina */
+  const trail = $('#trail'), tPath = $('#trailPath'), tBase = $('#trailBase'), runner = $('#trailRunner');
+  const steps = $$('.step', trail);
+  let trailST = null;
+  function buildTrail(){
+    const box = trail.getBoundingClientRect();
+    const pts = steps.map(s => { const r = $('.node', s).getBoundingClientRect(); return {x:r.left - box.left + r.width / 2, y:r.top - box.top + r.height / 2}; });
+    const end = {x:pts[pts.length - 1].x, y:box.height + 40};
+    const all = [...pts, end];
+    let d = 'M' + all[0].x + ' ' + all[0].y;
+    for (let i = 1; i < all.length; i++) {
+      const a = all[i - 1], b = all[i], my = (a.y + b.y) / 2, sw = (i % 2 ? 1 : -1) * Math.min(160, box.width * .18);
+      d += ' C' + (a.x + sw) + ' ' + my + ' ' + (b.x - sw) + ' ' + my + ' ' + b.x + ' ' + b.y;
+    }
+    tPath.setAttribute('d', d); tBase.setAttribute('d', d);
+    const L = tPath.getTotalLength();
+    tPath.style.strokeDasharray = L;
+    const marks = pts.map(p => { let best = 0, bd = 1e9; for (let l = 0; l <= L; l += 4) { const q = tPath.getPointAtLength(l), dd = (q.x - p.x) ** 2 + (q.y - p.y) ** 2; if (dd < bd) { bd = dd; best = l; } } return best / L; });
+    const draw = p => {
+      tPath.style.strokeDashoffset = L * (1 - p);
+      const q = tPath.getPointAtLength(L * p); runner.setAttribute('cx', q.x); runner.setAttribute('cy', q.y);
+      steps.forEach((s, i) => s.classList.toggle('is-on', p >= marks[i] - .01));
+    };
+    if (trailST) trailST.kill();
+    if (motion) trailST = ST.create({trigger:trail, start:'top 70%', end:'bottom 55%', scrub:.6, onUpdate:self => draw(self.progress)});
+    else draw(1);
+    draw(trailST ? trailST.progress : 1);
+  }
+
+  /* ciclo mensal */
+  const loopArc = $('#loopArc'), dotsG = $('#loopDots'), NS = 'http://www.w3.org/2000/svg';
+  const names = ['Planejar', 'Produzir', 'Publicar', 'Medir'], R = 140, CL = 2 * Math.PI * R;
+  const dots = names.map((n, i) => {
+    const a = -Math.PI / 2 + i * Math.PI / 2, x = 200 + R * Math.cos(a), y = 200 + R * Math.sin(a);
+    const c = document.createElementNS(NS, 'circle'); c.setAttribute('class', 'loop__dot'); c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', 11); dotsG.appendChild(c);
+    const t = document.createElementNS(NS, 'text'); t.setAttribute('class', 'loop__lbl');
+    const off = 32, lx = 200 + (R + off) * Math.cos(a), ly = 200 + (R + off) * Math.sin(a) + 4;
+    t.setAttribute('x', lx); t.setAttribute('y', i === 0 ? ly - 4 : i === 2 ? ly + 6 : ly);
+    t.setAttribute('text-anchor', i === 1 ? 'start' : i === 3 ? 'end' : 'middle');
+    if (i === 1) t.setAttribute('x', lx - 14); if (i === 3) t.setAttribute('x', lx + 14);
+    t.textContent = n; dotsG.appendChild(t);
+    return c;
+  });
+  loopArc.setAttribute('stroke-dasharray', CL);
+  loopArc.setAttribute('stroke-dashoffset', CL);
+  const loopItems = $$('#loopList li');
+  if (motion) {
+    const tl = G.timeline({repeat:-1, paused:true});
+    tl.set(dots, {attr:{class:'loop__dot'}}).set(loopArc, {attr:{'stroke-dashoffset':CL}});
+    dots.forEach((d, i) => {
+      tl.call(() => { d.classList.add('is-on'); loopItems.forEach((li, j) => li.style.opacity = j === i ? 1 : .35); });
+      tl.to(loopArc, {attr:{'stroke-dashoffset':CL * (1 - (i + 1) / 4)}, duration:1.3, ease:'power2.inOut'});
+    });
+    tl.to({}, {duration:.8}).call(() => { dots.forEach(d => d.classList.remove('is-on')); });
+    ST.create({trigger:'#loop', start:'top 85%', end:'bottom 15%', onToggle:self => self.isActive ? tl.play() : tl.pause()});
+  } else { loopArc.setAttribute('stroke-dashoffset', 0); dots.forEach(d => d.classList.add('is-on')); }
+
+  /* próximo passo: linha que se completa */
+  if (motion) G.fromTo('#nextFill', {'--p':0}, {'--p':1, ease:'none', scrollTrigger:{trigger:'#next', start:'top 85%', end:'top 45%', scrub:.6}});
+
+  /* portfólio simples: pilha que troca sozinha + miniaturas */
+  const P = ['asmet-seguranca','asmet-saude-mental','asmet-abril-verde','malhada-mutirao','asmet-maes','asmet-inclusao','asmet-abril-verde-2','barra-down','barra-infancia','malhada-trabalho','barra-tiradentes','barra-coleta','barra-autismo','barra-maes','malhada-autismo','vitoria-pedido','vitoria-sabor','miau-racao','miau-delivery','salgateria','josi','paramirim-tempo','paramirim-watch','paramirim-travar','wns-capa','wns-1992','wns-mixtape'];
+  const STACK = ['asmet-seguranca','malhada-mutirao','vitoria-pedido','barra-down','paramirim-tempo','miau-racao','wns-capa'];
+  const src = f => 'img/' + f + '.webp';
+  const viewer = $('#viewer'), vImg = $('#vImg'); let lastFocus = null;
+  const open = f => { lastFocus = document.activeElement; vImg.src = src(f); vImg.alt = 'Peça do portfólio'; viewer.hidden = false; $('#vClose').focus(); };
+  const close = () => { viewer.hidden = true; lastFocus && lastFocus.focus(); };
+  $('#vClose').addEventListener('click', close);
+  viewer.addEventListener('click', e => { if (e.target === viewer) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !viewer.hidden) close(); });
+
+  const thumbs = $('#thumbs');
+  P.forEach(f => { const b = document.createElement('button'); b.type = 'button'; b.className = 'thumb'; b.setAttribute('aria-label', 'Ampliar peça'); b.innerHTML = '<img src="' + src(f) + '" alt="" loading="lazy">'; b.addEventListener('click', () => open(f)); thumbs.appendChild(b); });
+  if (motion) G.from('.thumb', {opacity:0, y:20, duration:.5, stagger:.025, ease:'power2.out', scrollTrigger:{trigger:thumbs, start:'top 90%', once:true}});
+
+  const stage = $('#stack');
+  const st = {cards:[], order:[], timer:0, tl:null, vis:false, hover:false, s:null};
+  const size = () => { const w = innerWidth; return w < 420 ? {w:200, h:250, dx:20, dy:24} : w < 700 ? {w:240, h:300, dx:26, dy:30} : w < 1200 ? {w:290, h:362, dx:34, dy:38} : {w:330, h:412, dx:40, dy:44}; };
+  const slot = i => ({x:i * st.s.dx, y:-i * st.s.dy, z:-i * st.s.dx * 1.5, zIndex:st.cards.length - i});
+  const place = (el, s) => G ? G.set(el, {x:s.x, y:s.y, z:s.z, xPercent:-50, yPercent:-50, skewY:6, transformOrigin:'center center', zIndex:s.zIndex, force3D:true}) : (el.style.transform = 'translate(-50%,-50%) translate(' + s.x + 'px,' + s.y + 'px) skewY(6deg)', el.style.zIndex = s.zIndex);
+  function buildStack(){
+    clearInterval(st.timer); st.timer = 0; st.tl && st.tl.kill();
+    st.s = size(); const n = STACK.length, s = st.s;
+    stage.innerHTML = ''; stage.style.width = (s.w + (n - 1) * s.dx + 8) + 'px'; stage.style.height = (s.h + (n - 1) * s.dy + 24) + 'px';
+    const cs = document.createElement('div'); cs.className = 'cs'; cs.style.width = s.w + 'px'; cs.style.height = s.h + 'px';
+    const inner = document.createElement('div'); inner.className = 'cs-inner'; cs.appendChild(inner);
+    st.cards = STACK.map((f, i) => { const fig = document.createElement('figure'); fig.className = 'cs-card'; fig.style.width = s.w + 'px'; fig.style.height = s.h + 'px'; fig.tabIndex = 0; fig.setAttribute('role', 'button'); fig.setAttribute('aria-label', 'Ampliar peça');
+      fig.innerHTML = '<img src="' + src(f) + '" alt=""' + (i > 1 ? ' loading="lazy"' : '') + '>';
+      fig.addEventListener('click', () => open(f)); fig.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(f); } });
+      inner.appendChild(fig); return fig; });
+    stage.appendChild(cs);
+    st.order = st.cards.map((_, i) => i); st.cards.forEach((el, i) => place(el, slot(i))); run();
+  }
+  function swap(){
+    if (!G) return;
+    const [front, ...rest] = st.order, elF = st.cards[front], ease = 'elastic.out(0.6,0.9)', d = 2;
+    const tl = G.timeline(); st.tl = tl;
+    tl.to(elF, {y:'+=500', duration:d, ease});
+    tl.addLabel('promote', '-=' + d * .9);
+    rest.forEach((idx, i) => { const el = st.cards[idx], s = slot(i); tl.set(el, {zIndex:s.zIndex}, 'promote'); tl.to(el, {x:s.x, y:s.y, z:s.z, duration:d, ease}, 'promote+=' + i * .15); });
+    const back = slot(st.cards.length - 1);
+    tl.addLabel('return', 'promote+=' + d * .05);
+    tl.call(() => G.set(elF, {zIndex:back.zIndex}), undefined, 'return');
+    tl.to(elF, {x:back.x, y:back.y, z:back.z, duration:d, ease}, 'return');
+    tl.call(() => { st.order = [...rest, front]; });
+  }
+  function run(){
+    const go = st.vis && !st.hover && !reduce && !document.hidden && !!G;
+    if (go && !st.timer) { st.tl && st.tl.play(); st.timer = setInterval(swap, 4000); }
+    if (!go && st.timer) { clearInterval(st.timer); st.timer = 0; st.tl && st.tl.pause(); }
+  }
+  stage.addEventListener('mouseenter', () => { st.hover = true; run(); });
+  stage.addEventListener('mouseleave', () => { st.hover = false; run(); });
+  new IntersectionObserver(es => { st.vis = es[0].isIntersecting; run(); }, {threshold:.2}).observe(stage);
+  document.addEventListener('visibilitychange', run);
+
+  /* montagem e redimensionamento */
+  function layout(){ buildTrail(); }
+  buildStack();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layout(); motion && ST.refresh(); }); else layout();
+  addEventListener('load', () => { layout(); motion && ST.refresh(); });
+  let rz = 0, lw = innerWidth;
+  addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { layout(); if (innerWidth !== lw) { lw = innerWidth; buildStack(); } }, 200); });
+
+  /* copiar e-mail */
+  $('#copyMail').addEventListener('click', async e => {
+    const b = e.currentTarget;
+    try { await navigator.clipboard.writeText($('#mail').textContent); b.textContent = 'Copiado'; }
+    catch { const r = document.createRange(); r.selectNodeContents($('#mail')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selecionado'; }
+    setTimeout(() => b.textContent = 'Copiar', 1800);
+  });
+})();
+</script>
+
+</body>
+</html>
